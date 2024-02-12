@@ -27,6 +27,10 @@ $container = velocitytheme_option('justg_container_type', 'container');
                     'showposts' => 5,
                     'post_type' => array('post'),
                 );
+                $berita1 = velocitytheme_option('cat_berita1');
+                if (!empty($berita1)){
+                    $args_slider['cat'] = $berita1;
+                }
                 $slider_posts = get_posts($args_slider);
                 $i = 1;
                 if($slider_posts){
@@ -57,7 +61,10 @@ $container = velocitytheme_option('justg_container_type', 'container');
                 } ?>
             <div class="velocity-card mb-4"><?php velocity_post_carousel(velocitytheme_option('cat_berita2'),3,true); ?></div>
             <div class="velocity-card mb-4"><?php velocity_post_carousel(velocitytheme_option('cat_berita3'),3,true); ?></div>
-            <div class="velocity-card mb-4"><?php velocity_posts_gallery(velocitytheme_option('cat_berita4'),true); ?></div>
+            <div class="velocity-card mb-4">
+                <?php velocity_cat_name(); ?>
+                <?php velocity_posts_gallery(); ?>
+            </div>
         </div>
         <div class="col-md-4">
             <?php get_sidebar('main');?>
