@@ -130,12 +130,8 @@ function velocitychild_theme_setup() {
 
 		///field set posts
 		$fieldposts = [
-			'pilihan_editor'  => [
-				'label'		=> 'Pilihan Editor',
-				'section'	=> 'section_homeberita',
-			],
 			'berita1'  => [
-				'label'		=> 'Berita 1',
+				'label'		=> 'Berita 1 (Slider)',
 				'section'	=> 'section_homeberita',
 			],
 			'berita2'  => [
@@ -144,18 +140,6 @@ function velocitychild_theme_setup() {
 			],
 			'berita3'  => [
 				'label'		=> 'Berita 3',
-				'section'	=> 'section_homeberita',
-			],
-			'berita4'  => [
-				'label'		=> 'Berita 4',
-				'section'	=> 'section_homeberita',
-			],
-			'berita5'  => [
-				'label'		=> 'Berita 5',
-				'section'	=> 'section_homeberita',
-			],
-			'berita6'  => [
-				'label'		=> 'Berita 6',
 				'section'	=> 'section_homeberita',
 			],
 		];
