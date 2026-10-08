@@ -27,7 +27,7 @@ $container = velocitytheme_option('justg_container_type', 'container');
                     'showposts' => 5,
                     'post_type' => array('post'),
                 );
-                $berita1 = velocitytheme_option('cat_berita1');
+                $berita1 = velocity_berita18_kategori('berita1');
                 if (!empty($berita1)){
                     $args_slider['cat'] = $berita1;
                 }
@@ -42,7 +42,7 @@ $container = velocitytheme_option('justg_container_type', 'container');
                                 $class = $no == 1 ? ' active' : '';
                                 $post_id = $post->ID;
                                 echo '<div class="text-center carousel-item'.$class.'">';
-                                    echo do_shortcode('[resize-thumbnail width="650" height="350" linked="true" class="w-100" post_id="'.$post_id.'"]');
+                                    echo do_shortcode('[resize-thumbnail width="650" height="350" linked="true" class="w-100" loading="'.($no == 1 ? 'eager' : 'lazy').'" post_id="'.$post_id.'"]');
                                     echo '<div class="text-white bg-dark bg-opacity-75 position-absolute bottom-0 start-0 w-100 p-3">';
                                         echo '<a href="'.get_the_permalink($post_id).'" class="d-inline-block text-white fw-bold velocity-title-archive">'.$post->post_title.'</a>';
                                     echo '</div>';
@@ -59,8 +59,8 @@ $container = velocitytheme_option('justg_container_type', 'container');
                         echo '</div>';
                     echo '</div>';
                 } ?>
-            <div class="velocity-card mb-4"><?php velocity_post_carousel(velocitytheme_option('cat_berita2'),3,true); ?></div>
-            <div class="velocity-card mb-4"><?php velocity_post_carousel(velocitytheme_option('cat_berita3'),3,true); ?></div>
+            <div class="velocity-card mb-4"><?php velocity_post_carousel(velocity_berita18_kategori('berita2'),3,true); ?></div>
+            <div class="velocity-card mb-4"><?php velocity_post_carousel(velocity_berita18_kategori('berita3'),3,true); ?></div>
             <div class="velocity-card mb-4">
                 <?php velocity_cat_name(); ?>
                 <?php velocity_posts_gallery(); ?>

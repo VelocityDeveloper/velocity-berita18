@@ -10,172 +10,7 @@ add_action( 'after_setup_theme', 'velocitychild_theme_setup', 9 );
 
 function velocitychild_theme_setup() {	
 
-	if (class_exists('Kirki')) :
-
-		Kirki::add_panel('panel_berita', [
-			'priority'    => 10,
-			'title'       => esc_html__('Berita', 'justg'),
-			'description' => esc_html__('', 'justg'),
-		]);
-
-		///Section Color
-		Kirki::add_section('section_colorberita', [
-			'panel'    => 'panel_berita',
-			'title'    => __('Warna', 'justg'),
-			'priority' => 10,
-		]);
-		Kirki::add_field('justg_config', [
-			'type'        => 'color',
-			'settings'    => 'color_theme',
-			'label'       => __('Color Theme', 'kirki'),
-			'description' => esc_html__('', 'kirki'),
-			'section'     => 'section_colorberita',
-			'default'     => '#222222',
-			'transport'   => 'auto',
-			'output'      => [
-				[
-					'element'   => ':root',
-					'property'  => '--color-theme',
-				],
-				[
-					'element'   => '.border-color-theme',
-					'property'  => '--bs-border-color',
-				]
-			],
-		]);
-		Kirki::add_field('justg_config', [
-			'type'        => 'background',
-			'settings'    => 'background_website',
-			'label'       => esc_html__('Background', 'justg'),
-			'description' => esc_html__('', 'justg'),
-			'section'     => 'section_colorberita',
-			'default'     => [
-				'background-color'      => '#111111',
-				'background-image'      => '',
-				'background-repeat'     => 'repeat',
-				'background-position'   => 'center center',
-				'background-size'       => 'cover',
-				'background-attachment' => 'scroll',
-			],
-			'transport'   => 'auto',
-			'output'      => [
-				[
-					'element'   => ':root[data-bs-theme=light] body',
-				],
-			],
-		]);
-
-		///Section Iklan
-		Kirki::add_section('section_iklanberita', [
-			'panel'    => 'panel_berita',
-			'title'    => __('Iklan', 'justg'),
-			'priority' => 10,
-		]);
-		$fieldiklan = [
-			'iklan_header1'  => [
-				'label'			=> 'Iklan Header 1',
-				'description'	=> 'Ukuran gambar 980x100',
-			],
-			'iklan_header2'  => [
-				'label'			=> 'Iklan Header 2',
-				'description'	=> 'Ukuran gambar 980x100',
-			],
-			'iklan_footer'  => [
-				'label'			=> 'Iklan Footer',
-				'description'	=> 'Ukuran gambar 980x100',
-			],
-			'iklan_single'  => [
-				'label'			=> 'Iklan Halaman Berita',
-				'description'	=> 'Iklan Halaman Berita 640x100',
-			]
-		];
-		foreach ($fieldiklan as $idfield => $datafield) {
-			Kirki::add_field('justg_config', [
-				'type'        => 'image',
-				'settings'    => 'image_' . $idfield,
-				'label'       => esc_html__('Gambar ' . $datafield['label'], 'kirki'),
-				'description' => esc_html__($datafield['description'], 'kirki'),
-				'section'     => 'section_iklanberita',
-				'default'     => '',
-				'partial_refresh'	=> [
-					'partial_' . $idfield => [
-						'selector'        => '.part_' . $idfield,
-						'render_callback' => '__return_false'
-					]
-				],
-			]);
-			Kirki::add_field('justg_config', [
-				'type'     => 'link',
-				'settings' => 'link_' . $idfield,
-				'label'    => __('Link ' . $datafield['label'], 'kirki'),
-				'section'  => 'section_iklanberita',
-				'default'  => '',
-				'priority' => 10,
-			]);
-		}
-
-		///Section Home
-		Kirki::add_section('section_homeberita', [
-			'panel'    => 'panel_berita',
-			'title'    => __('Home', 'justg'),
-			'priority' => 10,
-		]);
-
-		///Section Kolom Kanan
-		Kirki::add_section('section_sidebarberita', [
-			'panel'    => 'panel_berita',
-			'title'    => __('Kolom Kanan', 'justg'),
-			'priority' => 10,
-		]);
-
-		///field set posts
-		$fieldposts = [
-			'berita1'  => [
-				'label'		=> 'Berita 1 (Slider)',
-				'section'	=> 'section_homeberita',
-			],
-			'berita2'  => [
-				'label'		=> 'Berita 2',
-				'section'	=> 'section_homeberita',
-			],
-			'berita3'  => [
-				'label'		=> 'Berita 3',
-				'section'	=> 'section_homeberita',
-			],
-		];
-		$categories = Kirki_Helper::get_terms('category');
-		$categories[''] = 'Semua Kategori';
-		unset($categories[1]);
-		foreach ($fieldposts as $idfield => $datafield) {
-			Kirki::add_field('justg_config', [
-				'type'        => 'select',
-				'settings'    => 'cat_' . $idfield,
-				'label'       => esc_html__($datafield['label'], 'kirki'),
-				'section'     => $datafield['section'],
-				'default'     => '',
-				'placeholder' => esc_html__('Pilih kategori', 'kirki'),
-				'priority'    => 10,
-				'multiple'    => 1,
-				'choices'     => $categories,
-				'partial_refresh'	=> [
-					'partial_' . $idfield => [
-						'selector'        => '.part_' . $idfield,
-						'render_callback' => '__return_false'
-					]
-				],
-			]);
-		}
-
-		// remove panel in customizer 
-		Kirki::remove_panel('global_panel');
-		Kirki::remove_panel('panel_footer');
-		Kirki::remove_section('header_image');
-
-		Kirki::remove_section('header_section');		
-		//Kirki::remove_control('header_section');
-		// Kirki::remove_control('display_header_text');
-
-	endif;
+	// Pengaturan Customizer ada di inc/customizer.php (tanpa Kirki).
 
 	register_nav_menus(
 		array(
@@ -259,12 +94,12 @@ add_action('save_post', 'save_youtube_meta_data');
 
 // Menampilkan banner iklan
 function get_berita_iklan($idiklan)	{
-	$iklan_content  = velocitytheme_option('image_' . $idiklan, '');
-	echo '<div class="part_' . $idiklan . '">';
+	$iklan_content  = velocity_berita18_url_gambar(get_theme_mod('image_' . $idiklan, ''));
+	echo '<div class="part_' . esc_attr($idiklan) . '">';
 	if ($iklan_content) {
-		$linkiklan = velocitytheme_option('link_' . $idiklan, '');
-		echo $linkiklan ? '<a href="' . $linkiklan . '" target="_blank">' : '';
-		echo '<img class="img-fluid" src="' . $iklan_content . '" loading="lazy">';
+		$linkiklan = get_theme_mod('link_' . $idiklan, '');
+		echo $linkiklan ? '<a href="' . esc_url($linkiklan) . '" target="_blank" rel="noopener">' : '';
+		echo '<img class="img-fluid" src="' . esc_url($iklan_content) . '" alt="' . esc_attr__('Iklan', 'justg') . '" loading="lazy">';
 		echo $linkiklan ? '</a>' : '';
 	}
 	echo '</div>';
@@ -396,9 +231,6 @@ function velocity_post_carousel($cat_id = null, $column = 4, $show_title = false
 // Menampilkan post gallery
 function velocity_posts_gallery() {
 	if (have_posts()) {
-		if($show_title == true){
-			velocity_cat_name($cat_id);
-		}
 		echo '<div class="row velocity-post-gallery">';
 			while (have_posts()) {
 				the_post();

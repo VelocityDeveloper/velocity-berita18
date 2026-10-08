@@ -22,6 +22,7 @@
  $inc = get_stylesheet_directory() . '/inc';
  $includes = [
 	'enqueue.php',
+	'customizer.php',
 	'function-child.php',
 	'shortcodes.php'
  ];
