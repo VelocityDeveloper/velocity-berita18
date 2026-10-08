@@ -1,0 +1,44 @@
+/*
+ * Skala ukuran seperti tema induk 2.4.x/2.5.x. Induk 2.7.5 memperkecil ukuran Bootstrap 0,875x;
+ * aturan di bawah menjaga tampilan Berita 18 tetap sama dengan versi lama.
+ */
+:root, [data-bs-theme=light] { --bs-body-font-size: 1rem; }
+/* Ukuran teks dasar yang dulu dicetak Kirki dari tipografi tema induk */
+body, .is-root-container { font-size: 14px; line-height: 1.5; }
+.h1, h1 { font-size: calc(1.375rem + 1.5vw); }
+.h2, h2 { font-size: calc(1.325rem + .9vw); }
+.h3, h3 { font-size: calc(1.3rem + .6vw); }
+.h4, h4 { font-size: calc(1.275rem + .3vw); }
+.h5, h5 { font-size: 1.25rem; }
+.h6, h6 { font-size: 1rem; }
+.fs-1 { font-size: calc(1.375rem + 1.5vw) !important; }
+.fs-2 { font-size: calc(1.325rem + .9vw) !important; }
+.fs-3 { font-size: calc(1.3rem + .6vw) !important; }
+.fs-4 { font-size: calc(1.275rem + .3vw) !important; }
+.fs-5 { font-size: 1.25rem !important; }
+.fs-6 { font-size: 1rem !important; }
+.form-control, .form-select, .input-group-text { font-size: 1rem; }
+.form-control-sm, .form-select-sm { font-size: .875rem; }
+.btn, .button { --bs-btn-font-size: 1rem; }
+.btn-group-sm > .btn, .btn-sm { --bs-btn-font-size: 0.875rem; }
+.dropdown-menu { --bs-dropdown-font-size: 1rem; }
+.navbar { --bs-navbar-brand-font-size: 1.25rem; --bs-navbar-toggler-font-size: 1.25rem; }
+.pagination { --bs-pagination-font-size: 1rem; }
+/* Judul arsip & komentar: ukuran lama (fs-4) */
+.comments-area .comment-reply-title, .comments-area .comments-title, .entry-header .entry-title, .page-header .page-title { font-size: calc(1.275rem + .3vw) !important; }
+/* Kotak komentar polos seperti versi lama (induk 2.7.5 memberi kartu putih berbayang) */
+.comments-area { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+@media (min-width: 1200px) {
+    .h1, h1, .fs-1 { font-size: 2.5rem; }
+    .h2, h2, .fs-2 { font-size: 2rem; }
+    .h3, h3, .fs-3 { font-size: 1.75rem; }
+    .h4, h4, .fs-4 { font-size: 1.5rem; }
+    .fs-1 { font-size: 2.5rem !important; }
+    .fs-2 { font-size: 2rem !important; }
+    .fs-3 { font-size: 1.75rem !important; }
+    .fs-4 { font-size: 1.5rem !important; }
+    .comments-area .comment-reply-title, .comments-area .comments-title, .entry-header .entry-title, .page-header .page-title { font-size: 1.5rem !important; }
+}
+/* Form komentar: ukuran & warna tombol seperti versi lama */
+.comments-area input[type=email], .comments-area input[type=text], .comments-area input[type=url], .comments-area textarea, .comments-area input[type=submit] { font-size: 1rem; line-height: 1.5; }
+.comments-area input[type=submit] { background-color: var(--bs-primary); border-color: var(--bs-primary); }

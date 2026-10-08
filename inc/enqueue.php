@@ -29,6 +29,12 @@ if( ! function_exists( 'justg_child_enqueue_parent_style') ) {
             $css_version
         );
         
+        // Dimuat sesudah CSS tema induk (justg-styles) supaya skala ukuran lama berlaku.
+        wp_enqueue_style( 'velocity-berita18-skala', get_stylesheet_directory_uri() . '/css/skala.css',
+            array( 'justg-styles' ),
+            $theme->get('Version') . '.' . filemtime( get_stylesheet_directory() . '/css/skala.css' )
+        );
+
         wp_enqueue_style( 'child-style', get_stylesheet_uri(),
             array( $parenthandle ),
             $theme->get('Version')
